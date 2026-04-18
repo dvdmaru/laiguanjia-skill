@@ -1,0 +1,102 @@
+{
+  "friend_count_thresholds": [
+    {
+      "min": 0,
+      "max": 50000,
+      "recommended_plan": "personal",
+      "base_monthly_cost_twd": 99
+    },
+    {
+      "min": 50001,
+      "max": 100000,
+      "recommended_plan": "advanced",
+      "base_monthly_cost_twd": 599
+    },
+    {
+      "min": 100001,
+      "max": null,
+      "recommended_plan": "escalate_to_sales",
+      "base_monthly_cost_twd": null,
+      "note": "超過 100,000 好友數目前公開方案未涵蓋，需透過 @batmobile 客服客製化議價"
+    }
+  ],
+  "plan_rank": {
+    "personal": 1,
+    "advanced": 2
+  },
+  "feature_to_min_base_plan": {
+    "booking": "personal",
+    "tagging_segmentation": "personal",
+    "rich_menu": "personal",
+    "mass_messaging": "personal",
+    "smart_customer_service": "personal",
+    "event_registration": "personal",
+    "hourly_analytics": "advanced",
+    "group_management": "advanced"
+  },
+  "addon_triggers": {
+    "event_registration": {
+      "addon_id": "event_module",
+      "addon_name": "活動管理模組",
+      "addon_monthly_cost_twd": 199,
+      "note": "活動管理模組可與個人版或進階版併用；不舉辦活動的月份可暫停，隨時可啟用（來源：賴管家 - 活動模組.md）"
+    }
+  },
+  "industry_hints": {
+    "hair_salon": {
+      "typical_plan": "personal",
+      "primary_use_cases": ["booking", "tagging_segmentation"],
+      "persona_example": "小帥（髮型設計師）",
+      "note": "個人工作室或 1-2 位設計師的髮廊，個人版即可滿足"
+    },
+    "nail_art": {
+      "typical_plan": "personal",
+      "primary_use_cases": ["booking", "tagging_segmentation"],
+      "persona_example": "Amanda（美甲師）",
+      "note": "個人工作室或小型美甲店，個人版即可滿足"
+    },
+    "fitness": {
+      "typical_plan": "personal",
+      "primary_use_cases": ["booking"],
+      "persona_example": "健身教練／小型健身工作室",
+      "note": "個人教練或小型工作室，個人版即可滿足"
+    },
+    "pet_grooming": {
+      "typical_plan": "personal",
+      "primary_use_cases": ["booking"],
+      "persona_example": "寵物美容師／寵物美容室",
+      "note": "個人版即可滿足"
+    },
+    "confectionery": {
+      "typical_plan": "personal",
+      "primary_use_cases": ["booking", "event_registration"],
+      "persona_example": "甜品師／甜點工作室",
+      "note": "若舉辦烘焙體驗活動，建議加購活動管理模組"
+    },
+    "medical": {
+      "typical_plan": "advanced",
+      "primary_use_cases": ["booking", "tagging_segmentation", "smart_customer_service"],
+      "persona_example": "醫美診所／月子中心",
+      "note": "好友數通常 > 50,000 且需要進階分群推播"
+    },
+    "retail": {
+      "typical_plan": "advanced",
+      "primary_use_cases": ["mass_messaging", "tagging_segmentation"],
+      "persona_example": "百貨公司品牌",
+      "note": "好友數通常 > 50,000 且需要進階分群推播"
+    },
+    "travel": {
+      "typical_plan": "advanced",
+      "primary_use_cases": ["mass_messaging", "group_management"],
+      "persona_example": "旅行社",
+      "note": "好友數通常 > 50,000 且需要群組管理"
+    }
+  },
+  "caveats": [
+    "升降級不立即生效，下個合約週期才生效（FAQ Q04）",
+    "每月自動續約，若需取消請透過 @batmobile 或 email service@batmobile.com.tw 聯繫（FAQ Q05）",
+    "實際最合適方案仍建議透過 @batmobile 客服詳談，上述為基於好友數與使用情境的初步建議"
+  ],
+  "source": "賴管家 - 費用.md + 賴管家 - FAQ.md + 賴管家 - 預約.md + 賴管家 - 活動模組.md + 賴管家 - 其他資訊.md",
+  "last_updated": "2026-04-18"
+}

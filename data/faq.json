@@ -1,0 +1,88 @@
+{
+  "faqs": [
+    {
+      "id": "Q01",
+      "question": "如何計算會員人數？個人版是否有好友數限制？",
+      "answer": "個人版適用於好友數小於 50,000 人的帳號。",
+      "category": "features",
+      "completeness": "partial",
+      "source_note": "官網答案為收合狀態，此處僅擷取片段；完整說明請至 https://lineoa.batmobile.com.tw/#faq 點擊展開，或透過 @batmobile 詢問客服。",
+      "source_url": "https://lineoa.batmobile.com.tw/#faq"
+    },
+    {
+      "id": "Q02",
+      "question": "使用個人版標籤數不夠是否可以加價購買？",
+      "answer": "個人版包含 30 組標籤。如需更多標籤，請參考進階版方案或洽詢客服。",
+      "category": "features",
+      "completeness": "partial",
+      "source_note": "官網答案為收合狀態，此處僅擷取片段；完整說明請至官網或透過 @batmobile 詢問客服。",
+      "source_url": "https://lineoa.batmobile.com.tw/#faq"
+    },
+    {
+      "id": "Q03",
+      "question": "如果會員人數在合約週期內變動，會收取額外的費用嗎？",
+      "answer": null,
+      "category": "billing",
+      "completeness": "collapsed_on_source",
+      "source_note": "官網答案為收合狀態且目前素材未包含任何片段，無法提供答案；請引導使用者至 https://lineoa.batmobile.com.tw/#faq 點擊展開，或透過 @batmobile 詢問客服。",
+      "source_url": "https://lineoa.batmobile.com.tw/#faq"
+    },
+    {
+      "id": "Q04",
+      "question": "是否可以隨時升級／降級方案嗎？如何收費？",
+      "answer": "方案可以隨時變更，但不會立刻生效；需等到下一個合約週期開始才會正式啟用新方案，費用也按照新方案的費用標準於下一合約週期起收取。當因變更付費方案而導致原本功能受限時，可能損失相關設定資料。",
+      "category": "billing",
+      "completeness": "full",
+      "source_note": "答案同時來自官網 FAQ 與服務條款補充。",
+      "source_url": "https://lineoa.batmobile.com.tw/#faq"
+    },
+    {
+      "id": "Q05",
+      "question": "訂閱到期後，會自動續約嗎？",
+      "answer": "訂閱採每月自動續約制，除非依取消條款取消，否則訂閱會於每月正式訂閱之那一日自動續約；系統不再另行發出續約通知，費用按所選付款方式於該日自動收取，直至取消為止。",
+      "category": "billing",
+      "completeness": "full",
+      "source_note": "答案來自服務條款補充，涵蓋續約機制與通知政策。",
+      "source_url": "https://lineoa.batmobile.com.tw/#faq"
+    },
+    {
+      "id": "Q06",
+      "question": "是否有開發票？",
+      "answer": null,
+      "category": "billing",
+      "completeness": "collapsed_on_source",
+      "source_note": "官網答案為收合狀態且目前素材未包含任何片段，無法提供答案；請引導使用者至官網點擊展開，或透過 @batmobile 詢問客服。",
+      "source_url": "https://lineoa.batmobile.com.tw/#faq"
+    },
+    {
+      "id": "Q07",
+      "question": "可以使用何種方式付款？",
+      "answer": "依服務條款，使用者同意授權串接之第三方平台儲存付款資訊，包含但不限於信用卡持卡人姓名、持卡人地址等。完整付款方式清單請洽客服。",
+      "category": "billing",
+      "completeness": "partial",
+      "source_note": "官網答案為收合狀態，此處僅擷取服務條款片段；完整付款方式清單請至官網或透過 @batmobile 詢問客服。",
+      "source_url": "https://lineoa.batmobile.com.tw/#faq"
+    },
+    {
+      "id": "Q08",
+      "question": "除了訂閱月費還會有其他收費？",
+      "answer": "依服務條款，所選方案網頁顯示之使用費不一定包含稅費（包含但不限於增值稅、商品服務稅、商品稅），系統將根據所選方案於付款日同時收取稅賦費用。",
+      "category": "billing",
+      "completeness": "partial",
+      "source_note": "官網答案為收合狀態，此處僅擷取服務條款片段；詳細的其他收費項目請至官網或透過 @batmobile 詢問客服。",
+      "source_url": "https://lineoa.batmobile.com.tw/#faq"
+    }
+  ],
+  "categories": [
+    "billing",
+    "features"
+  ],
+  "completeness_legend": {
+    "full": "答案完整，可直接用於使用者回覆",
+    "partial": "僅有片段答案；回覆時應附上「建議至官網查看完整說明或透過 @batmobile 詢問客服」提示",
+    "collapsed_on_source": "官網為收合狀態且目前素材未提供任何答案；回覆時必須導流至官網或 @batmobile"
+  },
+  "data_quality_note": "本 FAQ 資料目前 2/8 題為 full、4/8 題為 partial、2/8 題為 collapsed_on_source。完整答案請引導使用者至官網 https://lineoa.batmobile.com.tw/#faq 或透過 @batmobile 客服取得。P1.4 計畫爬蟲補齊完整答案。",
+  "source": "賴管家 - FAQ.md（原始擷取自 https://lineoa.batmobile.com.tw/#faq）",
+  "last_updated": "2026-04-18"
+}

@@ -32,6 +32,8 @@ ENV/
 .coverage
 htmlcov/
 .tox/
+# 測試執行期的 JSON 輸出（可由 tests/test_day3_handlers.py 重現）
+tests/outputs/
 
 # MCP Inspector session files (不上 repo)
 .mcp-inspector-state.json
