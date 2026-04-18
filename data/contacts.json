@@ -1,0 +1,35 @@
+{
+  "contacts": {
+    "line_oa_basic": {
+      "id": "@639sfpzz",
+      "deep_link": "https://line.me/R/ti/p/%40639sfpzz",
+      "note": "基礎 OA，亦可聯繫客服"
+    },
+    "line_oa_dedicated": {
+      "id": "@batmobile",
+      "deep_link": "https://line.me/R/ti/p/%40batmobile",
+      "note": "蝙蝠移動專屬 OA（主要客服管道）"
+    },
+    "email": "service@batmobile.com.tw",
+    "website": "https://lineoa.batmobile.com.tw/"
+  },
+  "trial_flow": [
+    "1. 加入 @batmobile（主要）或 @639sfpzz（備用）LINE 官方帳號",
+    "2. 透過 LINE 對話告知欲試用的方案（個人版 / 進階版）",
+    "3. 完成 LINE OA 串接（操作手冊 Part 3，lines 84-102）",
+    "4. 客服協助開通"
+  ],
+  "prefilled_messages": {
+    "trial_personal": "你好，我想試用賴管家個人版，請問怎麼開始？",
+    "trial_advanced": "你好，我想試用賴管家進階版，請問怎麼開始？",
+    "trial_event_module": "你好，我想加購活動管理模組，請問怎麼開始？",
+    "general_inquiry": "你好，我想了解賴管家，請問可以提供更多資訊嗎？"
+  },
+  "constraints": {
+    "no_payment_action": "本工具不執行金流，付款須由使用者自行透過蝙蝠移動授權的第三方平台完成",
+    "no_auto_submit": "本工具不自動送出訊息，只產生 LINE deep link 與預填文字範本",
+    "no_user_data_transmission": "本工具不主動傳送使用者個資到任何後端"
+  },
+  "source": "賴管家 - 其他資訊.md + 賴管家 - FAQ.md + mcp-spec.md Tool 5/6",
+  "last_updated": "2026-04-18"
+}

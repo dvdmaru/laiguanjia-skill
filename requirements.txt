@@ -1,0 +1,6 @@
+# 賴管家 MCP Server 依賴
+# Python >= 3.10
+
+# MCP 官方 Python SDK（含 FastMCP + CLI 工具 mcp dev / mcp inspector）
+# 版本鎖定於 1.2.0+ 以確保 FastMCP decorator API 穩定
+mcp[cli]>=1.2.0

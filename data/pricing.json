@@ -1,0 +1,71 @@
+{
+  "plans": [
+    {
+      "id": "personal",
+      "name": "個人版",
+      "name_en": "Personal",
+      "regular_price_twd": 299,
+      "promo_price_twd": 99,
+      "billing_cycle": "monthly_or_quarterly",
+      "friend_cap": 50000,
+      "friend_cap_min": 0,
+      "features": [
+        "會員管理",
+        "30 組標籤",
+        "發文管理",
+        "圖文選單",
+        "每日數據",
+        "預約管理"
+      ],
+      "target": "個人工作者（髮型師／美甲／健身教練／甜品師／寵物美容／接送司機／諮詢師等）",
+      "source_file": "賴管家 - 費用.md"
+    },
+    {
+      "id": "advanced",
+      "name": "進階版",
+      "name_en": "Advanced",
+      "regular_price_twd": 899,
+      "promo_price_twd": 599,
+      "billing_cycle": "monthly_or_quarterly",
+      "friend_cap": 100000,
+      "friend_cap_min": 50001,
+      "features": [
+        "個人版所有功能",
+        "每小時數據",
+        "群組管理",
+        "標籤管理",
+        "分群發文"
+      ],
+      "target": "中小企業、品牌分店 LINE OA、需要進階分群推播的團隊",
+      "note": "最多人使用的方案",
+      "source_file": "賴管家 - 費用.md"
+    },
+    {
+      "id": "event_module",
+      "name": "活動管理模組（加購）",
+      "name_en": "Event Management Module (Add-on)",
+      "regular_price_twd": null,
+      "promo_price_twd": 199,
+      "billing_cycle": "monthly",
+      "features": [
+        "報名表單自訂",
+        "報名人數上限控制",
+        "自動確認訊息",
+        "活動前 48 小時提醒",
+        "QR 碼簽到"
+      ],
+      "target": "需要辦活動報名／簽到／QR 碼／提醒的團隊（可與個人版或進階版併用）",
+      "is_addon": true,
+      "pausable": true,
+      "note": "不舉辦活動的月份可暫停，隨時可啟用",
+      "source_file": "賴管家 - 活動模組.md"
+    }
+  ],
+  "billing_rules": {
+    "auto_renewal": "每月自動續約，系統不再另行發出續約通知（FAQ Q05）",
+    "plan_change": "升降級不立即生效，於下個合約週期開始（FAQ Q04）",
+    "payment_method": "授權串接之第三方平台儲存付款資訊（FAQ Q07）"
+  },
+  "source": "賴管家 - 費用.md + 賴管家 - 活動模組.md + 賴管家 - FAQ.md",
+  "last_updated": "2026-04-18"
+}

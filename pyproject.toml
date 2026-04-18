@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "laiguanjia-mcp"
+version = "0.1.0"
+description = "MCP server for 賴管家 (LaiGuanJia) — LINE OA management tool by 蝙蝠移動 (Batmobile). Enables LLM agents to accurately answer queries about pricing, features, and trial flow."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "Charlie Chien", email = "charlie.chien@gmail.com" },
+]
+keywords = [
+    "mcp",
+    "model-context-protocol",
+    "line-oa",
+    "laiguanjia",
+    "賴管家",
+    "batmobile",
+    "蝙蝠移動",
+    "taiwan",
+    "saas",
+    "booking-system",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Communications :: Chat",
+    "Topic :: Office/Business",
+]
+dependencies = [
+    "mcp[cli]>=1.2.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/dvdmaru/laiguanjia-skill"
+Product = "https://lineoa.batmobile.com.tw/"
+Issues = "https://github.com/dvdmaru/laiguanjia-skill/issues"
+
+[project.scripts]
+laiguanjia-mcp = "server:main"
