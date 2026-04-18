@@ -29,6 +29,7 @@ from typing import Any
 from urllib.parse import quote
 
 from mcp.server.fastmcp import FastMCP
+from mcp.types import ToolAnnotations
 
 # --------------------------------------------------------------------------- #
 # Server 初始化
@@ -62,7 +63,14 @@ def _load_json(filename: str) -> dict[str, Any]:
 # --------------------------------------------------------------------------- #
 
 
-@mcp.tool()
+@mcp.tool(
+    annotations=ToolAnnotations(
+        readOnlyHint=True,
+        destructiveHint=False,
+        idempotentHint=True,
+        openWorldHint=False,
+    ),
+)
 def get_pricing(plan: str = "all", include_promo: bool = True) -> dict[str, Any]:
     """
     回傳賴管家方案價格。
@@ -114,7 +122,14 @@ def get_pricing(plan: str = "all", include_promo: bool = True) -> dict[str, Any]
 # --------------------------------------------------------------------------- #
 
 
-@mcp.tool()
+@mcp.tool(
+    annotations=ToolAnnotations(
+        readOnlyHint=True,
+        destructiveHint=False,
+        idempotentHint=True,
+        openWorldHint=False,
+    ),
+)
 def get_contact_and_trial(channel: str = "all") -> dict[str, Any]:
     """
     回傳蝙蝠移動（賴管家母公司）的官方聯繫管道 + 試用流程說明。
