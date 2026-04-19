@@ -209,8 +209,9 @@ def get_faq(
     keywords: list[str] | None = None,
 ) -> dict[str, Any]:
     """
-    回傳賴管家 FAQ。資料源為 `賴管家 - FAQ.md`，共 8 題（其中 2 題 full、
-    4 題 partial、2 題 collapsed_on_source）。
+    回傳賴管家 FAQ。資料源為官網 FAQ 原生內容（chunk module 24920，2026-04-19
+    P1.4 完成爬補），共 8 題全部為 full；部分題目含「服務條款補充」資訊
+    併入 source_note 供延伸引用。
 
     Args:
         question_id: 指定題號。可選值：
