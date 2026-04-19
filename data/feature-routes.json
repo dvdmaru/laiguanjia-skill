@@ -1,0 +1,225 @@
+{
+  "version": "0.1.0",
+  "last_updated": "2026-04-19",
+  "source": "docs/manual-toc.md + 賴管家 - 預約.md + 賴管家 - 活動模組.md",
+  "manual_file": "賴管家 - 操作手冊.md",
+  "manual_total_lines": 736,
+  "read_guidelines": {
+    "max_lines_per_read": 100,
+    "filter_base64_hint": "讀入後可用 `grep -v '^!\\[\\]'` 濾除 71 個 base64 圖片行，避免 context 爆量",
+    "prefer_supplementary_files": "若 sources 同時指向操作手冊 + 獨立 .md（例如預約.md / 活動模組.md），優先讀獨立 .md（純文字、無 base64、摘要清晰）"
+  },
+  "features": {
+    "booking": {
+      "display_name": "預約管理",
+      "summary": "店家資訊設定 → 管理服務項目（名稱／簡述／價格／時長）→ 行事曆（月／週／日三視圖）→ 預約列表 → 消費者端一鍵預約。預約確認訊息同步發送給店家與客人，預約當天 07:00 自動提醒客人。",
+      "sections": [
+        {
+          "section_id": "booking_supplement_full",
+          "file": "賴管家 - 預約.md",
+          "line_start": 1,
+          "line_end": null,
+          "recommended_offset": 1,
+          "recommended_limit": null,
+          "heading": "（整檔）",
+          "note": "23.8 KB 整檔，純文字無 base64，含店家設定步驟 + 8 個產業案例。優先讀此檔而非手冊"
+        },
+        {
+          "section_id": "booking_manual_ui",
+          "file": "賴管家 - 操作手冊.md",
+          "line_start": 291,
+          "line_end": 350,
+          "recommended_offset": 291,
+          "recommended_limit": 60,
+          "heading": "預約管理",
+          "note": "後台設定介面截圖 + 步驟說明，含 base64 圖片。僅在需要 UI 視覺參考時讀取"
+        }
+      ],
+      "case_studies": [
+        {"persona": "小帥（髮型設計師）", "industry": "hair_salon", "source_file": "賴管家 - 預約.md"},
+        {"persona": "Amanda（美甲師）", "industry": "nail_art", "source_file": "賴管家 - 預約.md"},
+        {"persona": "小玲（健身教練）", "industry": "fitness", "source_file": "賴管家 - 預約.md"},
+        {"persona": "小美（甜品師）", "industry": "confectionery", "source_file": "賴管家 - 預約.md"},
+        {"persona": "小惠（寵物美容師）", "industry": "pet_grooming", "source_file": "賴管家 - 預約.md"},
+        {"persona": "鋼琴／瑜伽老師", "industry": "education", "source_file": "賴管家 - 預約.md"},
+        {"persona": "心理諮詢師", "industry": "counseling", "source_file": "賴管家 - 預約.md"},
+        {"persona": "機場接送司機", "industry": "transportation", "source_file": "賴管家 - 預約.md"}
+      ]
+    },
+    "member_management": {
+      "display_name": "會員管理",
+      "summary": "標籤系統（個人版 30 組）、分群、會員資料查詢。與 tagging / CRM 應用共用同一段手冊。",
+      "sections": [
+        {
+          "section_id": "member_manual_core",
+          "file": "賴管家 - 操作手冊.md",
+          "line_start": 131,
+          "line_end": 181,
+          "recommended_offset": 131,
+          "recommended_limit": 51,
+          "heading": "會員管理",
+          "note": "含標籤、分群、會員資料三子功能"
+        }
+      ],
+      "case_studies": []
+    },
+    "tagging": {
+      "display_name": "標籤與分群",
+      "summary": "個人版 30 組標籤，進階版無上限。與 member_management 共段，另涉及 mass_messaging 分群發文。",
+      "sections": [
+        {
+          "section_id": "tagging_manual_core",
+          "file": "賴管家 - 操作手冊.md",
+          "line_start": 131,
+          "line_end": 181,
+          "recommended_offset": 131,
+          "recommended_limit": 51,
+          "heading": "會員管理（含標籤）",
+          "note": "標籤功能在會員管理段，與 member_management 共用此 section"
+        }
+      ],
+      "case_studies": []
+    },
+    "push_messaging": {
+      "display_name": "推播與發文",
+      "summary": "推播訊息、圖文訊息、分群發文（進階版）。",
+      "sections": [
+        {
+          "section_id": "push_manual_core",
+          "file": "賴管家 - 操作手冊.md",
+          "line_start": 182,
+          "line_end": 244,
+          "recommended_offset": 182,
+          "recommended_limit": 63,
+          "heading": "發布文章",
+          "note": "推播訊息 / 圖文訊息"
+        }
+      ],
+      "case_studies": []
+    },
+    "tracking_link": {
+      "display_name": "追蹤連結",
+      "summary": "UTM-like 連結追蹤，供分析流量來源。",
+      "sections": [
+        {
+          "section_id": "tracking_manual_core",
+          "file": "賴管家 - 操作手冊.md",
+          "line_start": 245,
+          "line_end": 265,
+          "recommended_offset": 245,
+          "recommended_limit": 21,
+          "heading": "追蹤連結",
+          "note": "短小章節，可一次讀完"
+        }
+      ],
+      "case_studies": []
+    },
+    "rich_menu": {
+      "display_name": "圖文選單",
+      "summary": "LINE OA rich menu 設定，版型配置與連結綁定。",
+      "sections": [
+        {
+          "section_id": "rich_menu_manual_core",
+          "file": "賴管家 - 操作手冊.md",
+          "line_start": 266,
+          "line_end": 290,
+          "recommended_offset": 266,
+          "recommended_limit": 25,
+          "heading": "圖文選單",
+          "note": "短小章節，可一次讀完"
+        }
+      ],
+      "case_studies": []
+    },
+    "smart_customer_service": {
+      "display_name": "智能客服",
+      "summary": "AI 客服模組：文件上傳、文件管理、文件測試、基本設定。Token 額度每月 100 萬（約 2 萬好友 OA 每人每天 3-5 問）。",
+      "sections": [
+        {
+          "section_id": "smart_cs_manual_core",
+          "file": "賴管家 - 操作手冊.md",
+          "line_start": 452,
+          "line_end": 545,
+          "recommended_offset": 452,
+          "recommended_limit": 94,
+          "heading": "模組 - 智能客服",
+          "note": "line 527 附近有 Token 額度 100 萬/月、客服開放時間、超出範圍預設回復文字等關鍵設定"
+        }
+      ],
+      "case_studies": []
+    },
+    "event_management": {
+      "display_name": "活動管理（加購模組）",
+      "summary": "額外加購模組 $199/月，報名表單、自動確認、48 小時前提醒、QR 碼簽到。不舉辦活動的月份可暫停。",
+      "sections": [
+        {
+          "section_id": "event_supplement_full",
+          "file": "賴管家 - 活動模組.md",
+          "line_start": 1,
+          "line_end": null,
+          "recommended_offset": 1,
+          "recommended_limit": null,
+          "heading": "（整檔）",
+          "note": "4.6 KB 純文字短檔，優先讀此"
+        },
+        {
+          "section_id": "event_manual_part_a",
+          "file": "賴管家 - 操作手冊.md",
+          "line_start": 546,
+          "line_end": 645,
+          "recommended_offset": 546,
+          "recommended_limit": 100,
+          "heading": "模組 - 活動管理（前半）",
+          "note": "手冊此模組共 191 行，建議分兩次讀。第一段 546-645"
+        },
+        {
+          "section_id": "event_manual_part_b",
+          "file": "賴管家 - 操作手冊.md",
+          "line_start": 646,
+          "line_end": 736,
+          "recommended_offset": 646,
+          "recommended_limit": 91,
+          "heading": "模組 - 活動管理（後半）",
+          "note": "手冊此模組共 191 行，建議分兩次讀。第二段 646-736"
+        }
+      ],
+      "case_studies": [
+        {"persona": "長榮航空刮刮樂", "industry": "airline_campaign", "source_file": "賴管家 - 操作手冊.md", "lines": "351-451"}
+      ]
+    },
+    "registration_and_login": {
+      "display_name": "註冊與登入",
+      "summary": "建立賴管家帳號、登入流程、後續引導。",
+      "sections": [
+        {
+          "section_id": "reg_login_manual_core",
+          "file": "賴管家 - 操作手冊.md",
+          "line_start": 34,
+          "line_end": 83,
+          "recommended_offset": 34,
+          "recommended_limit": 50,
+          "heading": "第二部分：註冊和登入",
+          "note": ""
+        }
+      ],
+      "case_studies": []
+    },
+    "oa_connection": {
+      "display_name": "LINE OA 串接",
+      "summary": "連接 LINE 官方帳號與 Messaging API 的核心步驟。試用流程第 3 步即在此段。",
+      "sections": [
+        {
+          "section_id": "oa_connection_manual_core",
+          "file": "賴管家 - 操作手冊.md",
+          "line_start": 84,
+          "line_end": 102,
+          "recommended_offset": 84,
+          "recommended_limit": 19,
+          "heading": "第三部分：基本設置（含連接您的 LINE OA）",
+          "note": "短小章節，可一次讀完；對應 contacts.json trial_flow 第 3 步"
+        }
+      ],
+      "case_studies": []
+    }
+  }
+}
