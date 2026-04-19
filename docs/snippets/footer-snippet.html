@@ -1,0 +1,119 @@
+<!--
+  賴管家 — Batmobile 官網頁腳透明度 Snippet（階段 B 交付包）
+  版本：v1.0 / 2026-04-19
+  維護者：Charlie Chien（charlie.chien@gmail.com）
+
+  用法：
+    將下方 <div class="laiguanjia-transparency-snippet">...</div> 整段貼到
+    Batmobile 官網頁腳（footer）區塊。CSS 已 inline 並加上
+    .laiguanjia-transparency-snippet 前綴避免污染全站樣式。
+
+  上版前請將下列兩處 URL 替換成 Batmobile 站內頁（階段 B 完成後）：
+    1. data-target-transparency  →  https://batmobile.com.tw/transparency
+    2. data-target-repo           →  https://github.com/dvdmaru/laiguanjia-skill
+
+  階段 A（GitHub Pages）期間可暫時指向：
+    https://dvdmaru.github.io/laiguanjia-skill/
+-->
+
+<div class="laiguanjia-transparency-snippet"
+     data-target-transparency="https://dvdmaru.github.io/laiguanjia-skill/"
+     data-target-repo="https://github.com/dvdmaru/laiguanjia-skill">
+
+  <style>
+    .laiguanjia-transparency-snippet {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      padding: 20px 0;
+      color: #545b64;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .laiguanjia-transparency-snippet .title {
+      font-weight: 600;
+      color: #1a1d21;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+    .laiguanjia-transparency-snippet .desc {
+      margin-bottom: 12px;
+      max-width: 640px;
+    }
+    .laiguanjia-transparency-snippet .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .laiguanjia-transparency-snippet .badges a {
+      display: inline-flex;
+      align-items: center;
+      transition: opacity .15s ease;
+    }
+    .laiguanjia-transparency-snippet .badges a:hover {
+      opacity: 0.8;
+    }
+    .laiguanjia-transparency-snippet .badges img {
+      height: 22px;
+      display: block;
+    }
+    .laiguanjia-transparency-snippet .links {
+      font-size: 0.85rem;
+    }
+    .laiguanjia-transparency-snippet .links a {
+      color: #1e88e5;
+      text-decoration: none;
+      margin-right: 12px;
+    }
+    .laiguanjia-transparency-snippet .links a:hover {
+      text-decoration: underline;
+    }
+    .laiguanjia-transparency-snippet .disclaimer {
+      font-size: 0.8rem;
+      color: #888;
+      margin-top: 8px;
+      font-style: italic;
+    }
+  </style>
+
+  <p class="title">賴管家 Skill — 技術透明度</p>
+  <p class="desc">
+    賴管家的 AI 代理層以開源 MCP Skill 形式公開。三項設計原則可由外部審查者自行驗證：
+  </p>
+
+  <div class="badges">
+    <a href="https://github.com/dvdmaru/laiguanjia-skill/blob/main/docs/whitepaper/01-mcp-architecture.md"
+       target="_blank" rel="noopener" aria-label="MCP Compatible — 白皮書 §01">
+      <img src="https://img.shields.io/badge/MCP-Compatible-2e7d32?style=flat-square&logo=anthropic&logoColor=white"
+           alt="MCP Compatible">
+    </a>
+    <a href="https://github.com/dvdmaru/laiguanjia-skill/blob/main/docs/whitepaper/04-dual-layer-validation.md"
+       target="_blank" rel="noopener" aria-label="Dual-Layer Validated — 白皮書 §04">
+      <img src="https://img.shields.io/badge/Dual--Layer-Validated-2e7d32?style=flat-square"
+           alt="Dual-Layer Validated">
+    </a>
+    <a href="https://github.com/dvdmaru/laiguanjia-skill/blob/main/docs/whitepaper/03-consent-gate-pattern.md"
+       target="_blank" rel="noopener" aria-label="Consent-Gated — 白皮書 §03">
+      <img src="https://img.shields.io/badge/Consent-Gated-2e7d32?style=flat-square"
+           alt="Consent-Gated">
+    </a>
+  </div>
+
+  <div class="links">
+    <a href="https://dvdmaru.github.io/laiguanjia-skill/" target="_blank" rel="noopener">
+      透明度頁 →
+    </a>
+    <a href="https://github.com/dvdmaru/laiguanjia-skill/blob/main/docs/whitepaper/README.md"
+       target="_blank" rel="noopener">
+      技術白皮書 →
+    </a>
+    <a href="https://github.com/dvdmaru/laiguanjia-skill" target="_blank" rel="noopener">
+      Source Code (MIT) →
+    </a>
+  </div>
+
+  <p class="disclaimer">
+    本區塊不主張任何第三方認證；所有徽章為 self-attested design claims，可點擊連結至對應白皮書章節自行驗證。
+  </p>
+
+</div>

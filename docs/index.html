@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="賴管家 Skill — 技術透明度頁。展示 MCP 架構、雙層驗證、Consent Gate 三項設計原則，提供完整白皮書與案例研究供外部審查。">
+<meta name="author" content="Charlie Chien">
+<meta property="og:title" content="賴管家 Skill — 技術透明度">
+<meta property="og:description" content="這是一個給審查者看的頁面，展示此 MCP Skill 的可驗證設計。">
+<meta property="og:type" content="website">
+<title>賴管家 Skill — 技術透明度 Transparency</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1d21;
+    --fg-muted: #545b64;
+    --border: #e4e7eb;
+    --surface: #f7f9fb;
+    --accent: #1e88e5;
+    --accent-hover: #1565c0;
+    --success: #2e7d32;
+    --warning-bg: #fff8e1;
+    --warning-border: #ffc107;
+    --shadow: 0 1px 3px rgba(0,0,0,.04), 0 4px 12px rgba(0,0,0,.06);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.7;
+    color: var(--fg);
+    background: var(--bg);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 24px;
+  }
+
+  header.page-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    margin-bottom: 40px;
+  }
+  header.page-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.01em;
+  }
+  header.page-header .subtitle {
+    color: var(--fg-muted);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+  header.page-header .en-subtitle {
+    color: var(--fg-muted);
+    font-size: 0.9rem;
+    font-style: italic;
+    margin: 6px 0 0 0;
+  }
+
+  section {
+    margin-bottom: 48px;
+  }
+  section h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--fg);
+    display: inline-block;
+  }
+  section p {
+    margin: 0 0 16px 0;
+    color: var(--fg);
+  }
+  section .muted {
+    color: var(--fg-muted);
+    font-size: 0.95rem;
+  }
+
+  /* Badges */
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 24px 0 16px 0;
+  }
+  .badges a {
+    display: inline-flex;
+    align-items: center;
+    transition: transform .15s ease;
+  }
+  .badges a:hover { transform: translateY(-2px); }
+  .badges img {
+    height: 28px;
+    display: block;
+  }
+  .badge-note {
+    font-size: 0.88rem;
+    color: var(--fg-muted);
+    margin-top: 8px;
+  }
+  .badge-note code {
+    background: var(--surface);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 0.85rem;
+  }
+
+  /* Cards */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+  }
+  .card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    background: var(--bg);
+    transition: box-shadow .2s ease, transform .15s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+  }
+  .card .icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+  .card h3 {
+    font-size: 1.15rem;
+    margin: 0 0 8px 0;
+    font-weight: 600;
+  }
+  .card h3 .en {
+    color: var(--fg-muted);
+    font-weight: 400;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 2px;
+  }
+  .card p {
+    color: var(--fg-muted);
+    font-size: 0.95rem;
+    margin: 0 0 16px 0;
+    flex-grow: 1;
+  }
+  .card .card-link {
+    font-weight: 500;
+    color: var(--accent);
+    word-break: break-all;
+  }
+  .card .card-link::after { content: " →"; }
+
+  /* Disclaimer */
+  .disclaimer {
+    background: var(--warning-bg);
+    border-left: 4px solid var(--warning-border);
+    padding: 20px 24px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+  }
+  .disclaimer strong {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--fg);
+  }
+  .disclaimer p {
+    margin: 0 0 8px 0;
+    color: var(--fg);
+  }
+  .disclaimer p:last-child { margin-bottom: 0; }
+
+  /* Verification table */
+  .verify-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 0.92rem;
+  }
+  .verify-table th,
+  .verify-table td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .verify-table th {
+    background: var(--surface);
+    font-weight: 600;
+    color: var(--fg);
+  }
+  .verify-table td code {
+    background: var(--surface);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 0.85rem;
+  }
+
+  /* Footer */
+  footer.page-footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--fg-muted);
+    font-size: 0.88rem;
+  }
+  footer.page-footer p { margin: 6px 0; }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .container { padding: 32px 20px; }
+    header.page-header h1 { font-size: 1.6rem; }
+    section h2 { font-size: 1.2rem; }
+    .card { padding: 20px; }
+  }
+
+  /* Print */
+  @media print {
+    .badges a:hover { transform: none; }
+    .card:hover { box-shadow: none; transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="page-header">
+  <h1>賴管家 Skill — 技術透明度</h1>
+  <p class="subtitle">給資安、法務、AI 倫理窗口的公開技術文件入口</p>
+  <p class="en-subtitle">Laiguanjia MCP Skill — Transparency Page for Security / Legal / AI Governance Reviewers</p>
+</header>
+
+<section id="intro">
+  <h2>這個頁面是做什麼的 <span style="font-size:.7em;color:var(--fg-muted);font-weight:400;">What this page is for</span></h2>
+  <p>
+    賴管家 Skill 是「賴管家（Laiguanjia）— 個人工作室／中小商家 LINE OA 經營工具」的 LLM 代理層，
+    透過 <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">Model Context Protocol (MCP)</a>
+    向任何支援 MCP 的 host agent（例如 Claude Desktop、Cowork mode）曝露 6 個<strong>唯讀工具</strong>。
+  </p>
+  <p>
+    這個頁面不是產品行銷頁，而是為以下三類讀者準備的技術透明度入口：
+  </p>
+  <ul>
+    <li><strong>資安窗口（Security）</strong>：想確認攻擊面、資料外流風險、LLM hallucination 造成的誤觸發風險</li>
+    <li><strong>法務窗口（Legal）</strong>：想確認個資法、消費者保護法、醫療廣告法在本 Skill 資料流中是否合規</li>
+    <li><strong>AI 倫理／風控窗口（AI Governance）</strong>：想確認使用者是否有明確同意、AI 是否會自主送出任何行動、是否有審計紀錄</li>
+  </ul>
+  <p class="muted">
+    如果您是想開始試用賴管家的店家使用者，這個頁面不適合您，請直接前往
+    <a href="https://lineoa.batmobile.com.tw/" target="_blank" rel="noopener">官方網站</a>
+    或 <a href="https://line.batmobile.com.tw/" target="_blank" rel="noopener">免費試用入口</a>。
+  </p>
+</section>
+
+<section id="badges">
+  <h2>三項可驗證的設計原則 <span style="font-size:.7em;color:var(--fg-muted);font-weight:400;">Three verifiable design principles</span></h2>
+  <p>
+    以下每顆徽章都對應一份白皮書章節。點擊徽章可直接閱讀對應的技術設計說明與實作證據。
+    這些徽章<strong>不是第三方認證</strong>，而是「我們主張的技術特性」與「可自行驗證的檔案」的連結。
+  </p>
+  <div class="badges">
+    <a href="https://github.com/dvdmaru/laiguanjia-skill/blob/main/docs/whitepaper/01-mcp-architecture.md"
+       target="_blank" rel="noopener" aria-label="MCP Compatible — 見白皮書第 01 章">
+      <img src="https://img.shields.io/badge/MCP-Compatible-2e7d32?style=flat-square&logo=anthropic&logoColor=white" alt="MCP Compatible">
+    </a>
+    <a href="https://github.com/dvdmaru/laiguanjia-skill/blob/main/docs/whitepaper/04-dual-layer-validation.md"
+       target="_blank" rel="noopener" aria-label="Dual-Layer Validated — 見白皮書第 04 章">
+      <img src="https://img.shields.io/badge/Dual--Layer-Validated-2e7d32?style=flat-square" alt="Dual-Layer Validated">
+    </a>
+    <a href="https://github.com/dvdmaru/laiguanjia-skill/blob/main/docs/whitepaper/03-consent-gate-pattern.md"
+       target="_blank" rel="noopener" aria-label="Consent-Gated — 見白皮書第 03 章">
+      <img src="https://img.shields.io/badge/Consent-Gated-2e7d32?style=flat-square" alt="Consent-Gated">
+    </a>
+  </div>
+
+  <table class="verify-table">
+    <thead>
+      <tr>
+        <th>徽章</th>
+        <th>技術主張</th>
+        <th>可驗證檔案（點擊可跳至 repo 對應章節）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>MCP Compatible</strong></td>
+        <td>以 FastMCP + stdio transport 實作，6 個工具全部 <code>destructiveHint=False</code>，可由任何 MCP host agent 載入</td>
+        <td><a href="https://github.com/dvdmaru/laiguanjia-skill/blob/main/docs/whitepaper/01-mcp-architecture.md" target="_blank" rel="noopener">白皮書 §01 MCP 架構</a></td>
+      </tr>
+      <tr>
+        <td><strong>Dual-Layer Validated</strong></td>
+        <td>每次 release 前跑兩層驗證：VM 端 Python JSON canonical diff（bytes 級比對）+ Mac 端 MCP Inspector UI spot check</td>
+        <td><a href="https://github.com/dvdmaru/laiguanjia-skill/blob/main/docs/whitepaper/04-dual-layer-validation.md" target="_blank" rel="noopener">白皮書 §04 雙層驗證</a></td>
+      </tr>
+      <tr>
+        <td><strong>Consent-Gated</strong></td>
+        <td><code>initiate_trial_contact</code> 第一行即為 consent gate（<code>isinstance(bool)</code> + <code>is True</code> 嚴格比對），8 個測試 case 全綠</td>
+        <td><a href="https://github.com/dvdmaru/laiguanjia-skill/blob/main/docs/whitepaper/03-consent-gate-pattern.md" target="_blank" rel="noopener">白皮書 §03 Consent Gate</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="badge-note">
+    徽章圖片來源：<a href="https://shields.io/" target="_blank" rel="noopener">shields.io</a>，動態產生，無任何第三方驗證服務介入。若徽章 URL 被修改，請以 repo 白皮書原文為準。
+  </p>
+</section>
+
+<section id="resources">
+  <h2>深入資源 <span style="font-size:.7em;color:var(--fg-muted);font-weight:400;">Deep-dive resources</span></h2>
+  <div class="cards">
+
+    <div class="card">
+      <div class="icon">📦</div>
+      <h3>Source Code<span class="en">原始碼（MIT 授權）</span></h3>
+      <p>完整 MCP server Python 原始碼、6 個工具的 handler 邏輯、資料層 JSON、單元測試、完整 git history 公開。</p>
+      <a class="card-link" href="https://github.com/dvdmaru/laiguanjia-skill" target="_blank" rel="noopener">
+        github.com/dvdmaru/laiguanjia-skill
+      </a>
+    </div>
+
+    <div class="card">
+      <div class="icon">📄</div>
+      <h3>Technical Whitepaper<span class="en">技術白皮書（繁中 + 英文 1:1 對照）</span></h3>
+      <p>四章架構：MCP 架構總覽 / 三段分離 / Consent Gate 範式 / 雙層 diff 驗證。每章含攻擊面分析、法規邊界、獨立可重現性章節。</p>
+      <a class="card-link" href="https://github.com/dvdmaru/laiguanjia-skill/blob/main/docs/whitepaper/README.md" target="_blank" rel="noopener">
+        docs/whitepaper/
+      </a>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎯</div>
+      <h3>Industry Case Studies<span class="en">產業案例研究（6 篇）</span></h3>
+      <p>髮型設計師、健身教練、美甲師、寵物美容師、醫美診所、代駕司機——6 位具名主角，內容來自官網公開 blog，非真實客戶個資。</p>
+      <a class="card-link" href="https://github.com/dvdmaru/laiguanjia-skill/blob/main/docs/case-studies/README.md" target="_blank" rel="noopener">
+        docs/case-studies/
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section id="disclaimer">
+  <h2>重要聲明 <span style="font-size:.7em;color:var(--fg-muted);font-weight:400;">Disclaimer</span></h2>
+  <div class="disclaimer">
+    <strong>本頁面不主張任何第三方認證。</strong>
+    <p>
+      上述三顆徽章（MCP Compatible / Dual-Layer Validated / Consent-Gated）皆為「Self-attested design claims」——
+      由我們主張、由我們可驗證，<strong>不代表任何外部機構背書</strong>。
+      例如 MCP Compatible 不是 Anthropic 官方認證，Consent-Gated 不是個資法意義上的 informed consent 背書。
+    </p>
+    <p>
+      所有技術細節皆可於上列 repo 自行驗證：白皮書、原始碼、單元測試、git commit history 全部公開，歡迎 clone、閱讀、質疑。
+      若您是代表法務或資安部門的審查者，可於 repo 的
+      <a href="https://github.com/dvdmaru/laiguanjia-skill/issues" target="_blank" rel="noopener">Issues</a>
+      開 issue 並標記 <code>whitepaper-review</code>，我會於 2 個工作天內首次回覆。
+    </p>
+    <p class="muted" style="margin-top:12px;">
+      <strong>Disclaimer (EN):</strong> This page makes no third-party certification claims. All badges above are self-attested design claims that you can independently verify via the public repo. They do not imply endorsement from Anthropic, any security authority, or any legal body.
+    </p>
+  </div>
+</section>
+
+<footer class="page-footer">
+  <p><strong>維護方：</strong> Charlie Chien ( <a href="mailto:charlie.chien@gmail.com">charlie.chien@gmail.com</a> )</p>
+  <p><strong>授權：</strong> 程式碼 MIT；資料（<code>data/*.json</code>）版權屬 賴管家 / Batmobile</p>
+  <p><strong>最後更新：</strong> 2026-04-19（P1.5 透明度落地頁初版）</p>
+  <p><strong>Repo：</strong> <a href="https://github.com/dvdmaru/laiguanjia-skill" target="_blank" rel="noopener">github.com/dvdmaru/laiguanjia-skill</a> ｜ <strong>Issues：</strong> <a href="https://github.com/dvdmaru/laiguanjia-skill/issues" target="_blank" rel="noopener">回報 / 疑問</a></p>
+</footer>
+
+</div>
+</body>
+</html>

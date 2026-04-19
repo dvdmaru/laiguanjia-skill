@@ -26,6 +26,7 @@
 - [Use with Claude Desktop / Cursor / Zed](#use-with-claude-desktop--cursor--zed)
 - [Architecture](#architecture)
 - [Security Constraints](#security-constraints)
+- [Transparency 技術透明度](#transparency-技術透明度)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [License](#license)
@@ -243,6 +244,35 @@ mcp dev server.py
 
 ---
 
+## Transparency 技術透明度
+
+為方便外部資安、法務、AI 倫理窗口審查本 Skill，我們提供一個公開的**技術透明度入口頁**：
+
+- **透明度頁（GitHub Pages，階段 A）**：<https://dvdmaru.github.io/laiguanjia-skill/>
+- **技術白皮書**（繁中 + 英文 1:1 對照）：[`docs/whitepaper/README.md`](./docs/whitepaper/README.md)
+- **產業案例研究**（6 篇）：[`docs/case-studies/README.md`](./docs/case-studies/README.md)
+- **頁腳 Snippet 交付包**（供 Batmobile 官網階段 B 使用）：[`docs/snippets/`](./docs/snippets/)
+
+### 三項可驗證的設計原則
+
+透明度頁上展示三顆徽章，每顆直連到白皮書對應章節供自行驗證：
+
+[![MCP Compatible](https://img.shields.io/badge/MCP-Compatible-2e7d32?style=flat-square&logo=anthropic&logoColor=white)](./docs/whitepaper/01-mcp-architecture.md)
+[![Dual-Layer Validated](https://img.shields.io/badge/Dual--Layer-Validated-2e7d32?style=flat-square)](./docs/whitepaper/04-dual-layer-validation.md)
+[![Consent-Gated](https://img.shields.io/badge/Consent-Gated-2e7d32?style=flat-square)](./docs/whitepaper/03-consent-gate-pattern.md)
+
+| 徽章 | 技術主張 | 對應章節 |
+|---|---|---|
+| **MCP Compatible** | 以 FastMCP + stdio transport 實作，6 個工具全部 `destructiveHint=False` | [§01 MCP 架構](./docs/whitepaper/01-mcp-architecture.md) |
+| **Dual-Layer Validated** | Release 前跑 VM Python JSON canonical diff + Mac MCP Inspector UI spot check 兩層驗證 | [§04 雙層驗證](./docs/whitepaper/04-dual-layer-validation.md) |
+| **Consent-Gated** | `initiate_trial_contact` 第一行即為 consent gate，嚴格 `isinstance(bool)` + `is True` 比對 | [§03 Consent Gate](./docs/whitepaper/03-consent-gate-pattern.md) |
+
+> **本 repo 不主張任何第三方認證**。上述三顆徽章皆為 self-attested design claims——由我們主張、由我們可驗證，不代表 Anthropic、任何資安機構或任何法律單位背書。所有技術細節可於本 repo 自行驗證。
+
+階段 A（GitHub Pages）已上線；階段 B（嵌入 [batmobile.com.tw](https://batmobile.com.tw/) 頁腳 + 新增 `/transparency` 內頁）待 Batmobile 官網編修權限恢復後執行。設計決策見 ADR [`memory/decisions/2026-04-19-laiguanjia-transparency-not-ai-ready.md`](../memory/decisions/2026-04-19-laiguanjia-transparency-not-ai-ready.md)（Charlie 內部記憶，未進 public repo）。
+
+---
+
 ## Roadmap
 
 ### P1 Day 1 — v0.1 (2026-04-18) ✅
@@ -259,8 +289,11 @@ mcp dev server.py
 - [ ] `check_plan_suitability` handler
 - [ ] `get_feature_detail` handler（延遲載入 12 MB 操作手冊）
 - [ ] `initiate_trial_contact` handler（含 deep link 生成 + 安全約束檢查）
-- [ ] `/docs` 補產業 case study（髮型師／美甲／長榮航空刮刮樂等）
-- [ ] Batmobile 官網頁腳「AI Ready」徽章上線
+- [x] `/docs` 補產業 case study（髮型師／健身／美甲／寵物美容／醫美診所／代駕）— P1.3a ✅
+- [x] 技術白皮書 4 章（繁中 + 英文）+ ADR 落盤 — P1.3b ✅
+- [x] GitHub Pages 透明度頁（3 卡片 + 3 可驗證徽章 + disclaimer）— P1.5 階段 A ✅
+- [ ] Batmobile 官網頁腳 snippet 上版（階段 B，待編修權限恢復）
+- [ ] 60 秒示範影片嵌入 README 與透明度頁 — P1.6
 
 ### P2 — v0.3 (TBD)
 
