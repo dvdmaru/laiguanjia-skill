@@ -1,7 +1,7 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "last_updated": "2026-04-19",
-  "source": "docs/manual-toc.md + 賴管家 - 預約.md + 賴管家 - 活動模組.md",
+  "source": "docs/manual-toc.md + 賴管家 - 預約.md + 賴管家 - 活動模組.md + docs/case-studies/",
   "manual_file": "賴管家 - 操作手冊.md",
   "manual_total_lines": 736,
   "read_guidelines": {
@@ -36,14 +36,60 @@
         }
       ],
       "case_studies": [
-        {"persona": "小帥（髮型設計師）", "industry": "hair_salon", "source_file": "賴管家 - 預約.md"},
-        {"persona": "Amanda（美甲師）", "industry": "nail_art", "source_file": "賴管家 - 預約.md"},
-        {"persona": "小玲（健身教練）", "industry": "fitness", "source_file": "賴管家 - 預約.md"},
-        {"persona": "小美（甜品師）", "industry": "confectionery", "source_file": "賴管家 - 預約.md"},
-        {"persona": "小惠（寵物美容師）", "industry": "pet_grooming", "source_file": "賴管家 - 預約.md"},
-        {"persona": "鋼琴／瑜伽老師", "industry": "education", "source_file": "賴管家 - 預約.md"},
-        {"persona": "心理諮詢師", "industry": "counseling", "source_file": "賴管家 - 預約.md"},
-        {"persona": "機場接送司機", "industry": "transportation", "source_file": "賴管家 - 預約.md"}
+        {
+          "persona": "小帥（髮型設計師）",
+          "industry": "hair_salon",
+          "source_file": "賴管家 - 預約.md",
+          "case_study_file": "docs/case-studies/01-stylist-xiaoshuai.md",
+          "blog_slug": "stylist",
+          "official_url": "https://lineoa.batmobile.com.tw/blogs/stylist",
+          "reminder_window": "預約日當天早上 7 點"
+        },
+        {
+          "persona": "Amanda（健身教練）",
+          "industry": "fitness",
+          "source_file": "賴管家 - 預約.md",
+          "case_study_file": "docs/case-studies/02-fitness-amanda.md",
+          "blog_slug": "lineoa_personaltrainer",
+          "official_url": "https://lineoa.batmobile.com.tw/blogs/lineoa_personaltrainer",
+          "reminder_window": "預約日當天早上 7 點"
+        },
+        {
+          "persona": "小玲（美甲師）",
+          "industry": "nail_art",
+          "source_file": "賴管家 - 預約.md",
+          "case_study_file": "docs/case-studies/03-manicure-xiaoling.md",
+          "blog_slug": "manicure",
+          "official_url": "https://lineoa.batmobile.com.tw/blogs/manicure",
+          "reminder_window": "預約日前一天傍晚"
+        },
+        {
+          "persona": "小美（寵物美容師）",
+          "industry": "pet_grooming",
+          "source_file": "賴管家 - 預約.md",
+          "case_study_file": "docs/case-studies/04-petgrooming-xiaomei.md",
+          "blog_slug": "petgrooming",
+          "official_url": "https://lineoa.batmobile.com.tw/blogs/petgrooming",
+          "reminder_window": "預約日當天早上 7 點"
+        },
+        {
+          "persona": "小惠（診所護理師）",
+          "industry": "clinic",
+          "source_file": "賴管家 - 預約.md",
+          "case_study_file": "docs/case-studies/05-clinic-xiaohui.md",
+          "blog_slug": "clinic",
+          "official_url": "https://lineoa.batmobile.com.tw/blogs/clinic",
+          "reminder_window": "預約看診前一天傍晚"
+        },
+        {
+          "persona": "小陳（職業駕駛／機場接送）",
+          "industry": "transportation",
+          "source_file": "賴管家 - 預約.md",
+          "case_study_file": "docs/case-studies/06-driver-xiaochen.md",
+          "blog_slug": "uber",
+          "official_url": "https://lineoa.batmobile.com.tw/blogs/uber",
+          "reminder_window": "預約出發時間前 30 分鐘"
+        }
       ]
     },
     "member_management": {
