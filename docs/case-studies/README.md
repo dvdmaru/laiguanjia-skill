@@ -17,7 +17,7 @@ feature: booking
 
 - **來源優先**：所有情境敘事以官網 `https://lineoa.batmobile.com.tw/blogs/*` 部落格文章為權威來源，`docs/case-studies/` 下的每篇 case 都是這些長文的結構化抽取版
 - **真實主角**：6 位主角皆來自官網 blog 長文，並非自行編造。官網首頁 `/stories/*` 另有 4 位短見證主角（甜甜、阿管、奈奈、Lily），兩套敘事分工不同——短見證走行銷節奏，長文走產業情境
-- **Skill 對接**：每篇 case 末段列出在同樣情境下，賴管家 Skill 會如何透過 MCP 工具（`get_feature_detail`、`get_pricing`、`check_plan_suitability`、`get_contact_and_trial`、`initiate_trial_contact`）幫使用者決策
+- **Skill 對接**：每篇 case 末段列出在同樣情境下，賴管家 Skill 會如何透過 MCP 工具（`get_feature_detail`、`get_pricing`、`check_plan_suitability`、`get_contact_and_trial`、`get_faq`、`initiate_trial_contact`）幫使用者決策
 - **資料一致**：本索引與 `data/feature-routes.json` 的 `features.booking.case_studies` 陣列同步維護（6 項，非 P0 誤寫的 8 項）
 
 ## 案例一覽
