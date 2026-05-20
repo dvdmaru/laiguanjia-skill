@@ -149,23 +149,18 @@ Server 以 stdio transport 啟動。正常情況下不會有任何輸出（stdio
 mcp dev server.py
 ```
 
-預期看到 2 個可用工具：`get_pricing`、`get_contact_and_trial`。
+預期看到 6 個可用工具：`get_pricing`、`get_contact_and_trial`、`get_faq`、`check_plan_suitability`、`get_feature_detail`、`initiate_trial_contact`。
 
 ---
 
 ## Tool Catalog
 
-### 已實作 / Implemented (v0.1)
+### 已實作 / Implemented
 
 | Tool | Type | Description |
 |---|---|---|
 | `get_pricing` | Query | 回傳三個方案（個人版／進階版／活動模組）的價格、好友數上限、功能清單 |
 | `get_contact_and_trial` | Query | 回傳蝙蝠移動官方聯繫管道（LINE OA `@batmobile`／`@639sfpzz`、Email）+ 試用流程 |
-
-### 規劃中 / Planned (v0.2+)
-
-| Tool | Type | Description |
-|---|---|---|
 | `get_faq` | Query | 回傳 FAQ 指定題或全部（試用、升降級、續約、結帳等 8 題） |
 | `check_plan_suitability` | Query (with reasoning) | 依好友數 + 使用情境推薦方案 |
 | `get_feature_detail` | Query (manual routing) | 路由到 12 MB 操作手冊指定章節（booking / tagging / push / rich_menu / smart_cs / event） |
