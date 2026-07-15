@@ -50,17 +50,30 @@
 
 LaiGuanJia is a LINE Official Account (LINE OA) management tool developed by Batmobile, focused on solo professionals and small teams in Taiwan. Built on LINE Messaging API and LIFF, it emphasizes affordable monthly pricing (starting from **NT$99/month**) and a five-minute booking system setup.
 
-### 方案價格 / Pricing
+### 方案價格 / Pricing（2026-07-15 對齊官網定價紅線版）
 
-| 方案 / Plan | 原價 / Regular | 優惠價 / Promo | 好友數 / Friend Cap | 適用 / For |
-|---|---|---|---|---|
-| **個人版** (Personal) | NT$299/月 | **NT$99/月** | < 50,000 | 個人工作者、單打獨鬥型創業者 |
-| **進階版** (Advanced) ⭐ | NT$899/月 | **NT$599/月** | 50,001 – 100,000 | 中小企業、品牌分店、需要分群推播的團隊 |
-| **活動管理模組** (Event Module, add-on) | — | **NT$199/月** | — | 需要辦活動報名／簽到／QR 碼／提醒的團隊（可暫停） |
+**主套餐 / Base Plans**（底盤功能方案，**不含任何模組額度**）
+
+| 方案 / Plan | 月費 / Price | 適用 / For |
+|---|---|---|
+| **個人版** (Personal) | **NT$99/月** | 個人工作者、單打獨鬥型創業者 |
+| **進階版** (Advanced) ⭐ | **NT$599/月** | 中小企業、品牌分店、需要分群推播的團隊 |
+
+**加購模組 / Add-on Modules**（純加購，需搭配主套餐）
+
+| 模組 / Module | 月費 / Price | 說明 |
+|---|---|---|
+| **智能客服** (AI Customer Service) | **NT$149 / 249 / 499** | 三級差異＝素材形式＋模型等級（非對話量）；AI 純問答代答，額度以百分比顯示於後台 |
+| **活動管理** (Event Management) | **NT$199** | 報名／簽到／QR 碼／48 小時前提醒（不辦活動的月份可暫停） |
+| **分眾圖文選單** (Segmented Rich Menu) | **NT$299** | 新客、老客、VIP 各看到不同選單 |
+
+> ⚠️ 主套餐不含 AI——「NT$99 含 AI」是錯誤表述。想要 AI 代答用組合框架：
+> **個人版 $99 ＋ 智能客服基本版 $149 ＝ NT$248/月 ≈ 一天 8 元**。
+> 好友數級距（早期文件的 50,000／100,000）為歷史參考值，官網現行版本未再標示，簽約前請向 @batmobile 客服確認。
 
 **計費規則 / Billing Rules**
 
-- 月繳 / 季繳，**每月自動續約**（不另行通知）
+- 價格皆為新台幣、未稅；月繳不綁約，**每月自動續約**（不另行通知）
 - 升降級**不立即生效**，於下個合約週期開始
 - 付款透過授權的第三方平台儲存付款資訊（非信用卡直接扣款）
 

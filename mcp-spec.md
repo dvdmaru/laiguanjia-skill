@@ -7,6 +7,8 @@ status: spec-draft（未實作，P1 階段實作）
 
 # 賴管家 MCP 工具規格草稿（v0.1）
 
+> ⚠️ **2026-07-15 事實更新**：定價資料已對齊官網紅線版——主套餐只有個人版 $99／進階版 $599（只標現價，原促銷框架「原價 299/899」下架且 899 未經驗證）；模組採加購制（智能客服 $149/249/499 三級、活動管理 $199、分眾圖文選單 $299），**主套餐不含任何模組額度**；免費試用走官網註冊入口、不需先加 LINE 好友。本檔以下的 request/response 範例為 v0.1 歷史草稿，**實際欄位以 `data/*.json` 與 `server.py` docstring 為準**。
+
 > **定位**：本檔為 P0 骨架階段的**工具介面契約**，供 P1 實作 MCP server 時的 source of truth。
 > **實作目標**：P1 新建 `dvdmaru/laiguanjia-skill` repo，在 `src/tools/` 下各工具對應一個 handler。
 > **參考結構**：jinguyuan-dumpling-skill 的 5+1 工具模式（5 個查詢型 + 1 個動作型）。
@@ -15,7 +17,7 @@ status: spec-draft（未實作，P1 階段實作）
 
 | # | 名稱 | 類型 | 一句話 |
 |---|---|---|---|
-| 1 | `get_pricing` | 查詢 | 回傳三個方案（個人版／進階版／活動模組）的價格 + 好友數上限 + 功能 |
+| 1 | `get_pricing` | 查詢 | 回傳主套餐 2 個（個人版／進階版）＋加購模組 3 個（智能客服／活動管理／分眾圖文選單）的價格與功能 |
 | 2 | `get_faq` | 查詢 | 回傳 8 題 FAQ（試用、升降級、續約、結帳等）指定題或全部 |
 | 3 | `check_plan_suitability` | 查詢（含推理） | 依使用者的好友數 + 使用情境 → 建議方案 |
 | 4 | `get_feature_detail` | 查詢（路由到手冊） | 指定功能關鍵字（booking/tagging/push/menu/smart_cs/event_management）回傳該章節摘要 + 手冊 line 範圍 |
@@ -191,6 +193,7 @@ status: spec-draft（未實作，P1 階段實作）
           "rich_menu",
           "smart_customer_service",
           "event_registration",
+          "segmented_rich_menu",
           "hourly_analytics",
           "group_management"
         ]

@@ -31,15 +31,28 @@
     "mass_messaging": "personal",
     "smart_customer_service": "personal",
     "event_registration": "personal",
+    "segmented_rich_menu": "personal",
     "hourly_analytics": "advanced",
     "group_management": "advanced"
   },
   "addon_triggers": {
+    "smart_customer_service": {
+      "addon_id": "smart_cs_module",
+      "addon_name": "智能客服模組（基本版）",
+      "addon_monthly_cost_twd": 149,
+      "note": "主套餐不含任何 AI 額度——智能客服是加購模組，基本版 149／進階版 249／加強版 499（三級差異＝素材形式＋模型等級，非對話量），此處以基本版估價。組合框架：個人版 99＋基本版 149＝NT$248/月 ≈ 一天 8 元。AI 定位為純問答代答，不執行預約、下訂等動作"
+    },
     "event_registration": {
       "addon_id": "event_module",
       "addon_name": "活動管理模組",
       "addon_monthly_cost_twd": 199,
       "note": "活動管理模組可與個人版或進階版併用；不舉辦活動的月份可暫停，隨時可啟用（來源：賴管家 - 活動模組.md）"
+    },
+    "segmented_rich_menu": {
+      "addon_id": "segment_menu_module",
+      "addon_name": "分眾圖文選單模組",
+      "addon_monthly_cost_twd": 299,
+      "note": "基本圖文選單為主套餐內含功能；「分眾」圖文選單（新客／老客／VIP 看到不同選單）為加購模組 299/月"
     }
   },
   "industry_hints": {
@@ -93,10 +106,14 @@
     }
   },
   "caveats": [
+    "主套餐（個人版 99／進階版 599）不含任何模組額度；智能客服等模組採加購制，需搭配主套餐使用",
+    "智能客服為純問答定位：AI 代答訊息並導引，不執行預約、下訂、貼標等動作",
+    "好友數 50,000／100,000 級距為歷史參考值，官網現行版本未再標示；簽約前請向 @batmobile 客服確認實際級距",
+    "價格皆為新台幣、未稅、月繳",
     "升降級不立即生效，下個合約週期才生效（FAQ Q04）",
     "每月自動續約，若需取消請透過 @batmobile 或 email service@batmobile.com.tw 聯繫（FAQ Q05）",
     "實際最合適方案仍建議透過 @batmobile 客服詳談，上述為基於好友數與使用情境的初步建議"
   ],
-  "source": "賴管家 - 費用.md + 賴管家 - FAQ.md + 賴管家 - 預約.md + 賴管家 - 活動模組.md + 賴管家 - 其他資訊.md",
-  "last_updated": "2026-04-18"
+  "source": "laiguanjia-site content/site/pricing.ts（紅線版，2026-07-15）+ 賴管家 - 費用.md + 賴管家 - FAQ.md + 賴管家 - 預約.md + 賴管家 - 活動模組.md + 賴管家 - 其他資訊.md",
+  "last_updated": "2026-07-15"
 }

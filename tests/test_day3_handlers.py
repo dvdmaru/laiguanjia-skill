@@ -100,6 +100,24 @@ GROUPS: list[dict] = [
         "args": {"friend_count": 1000, "use_cases": ["group_management"]},
     },
     {
+        "name": "plan | 5000 好友 + smart_customer_service → personal + smart_cs_module 加購（99+149=248，紅線：主套餐不含 AI）",
+        "fn": "check_plan_suitability",
+        "args": {"friend_count": 5000, "use_cases": ["smart_customer_service"]},
+    },
+    {
+        "name": "plan | 5000 好友 + segmented_rich_menu → personal + segment_menu_module 加購（99+299=398）",
+        "fn": "check_plan_suitability",
+        "args": {"friend_count": 5000, "use_cases": ["segmented_rich_menu"]},
+    },
+    {
+        "name": "plan | 3000 好友 + booking+smart_cs+event → personal + 雙加購（99+149+199=447）",
+        "fn": "check_plan_suitability",
+        "args": {
+            "friend_count": 3000,
+            "use_cases": ["booking", "smart_customer_service", "event_registration"],
+        },
+    },
+    {
         "name": "plan | friend_count=-1（防禦性 - 非負整數）",
         "fn": "check_plan_suitability",
         "args": {"friend_count": -1},

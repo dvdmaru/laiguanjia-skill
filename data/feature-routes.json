@@ -1,6 +1,6 @@
 {
-  "version": "0.1.1",
-  "last_updated": "2026-04-19",
+  "version": "0.1.2",
+  "last_updated": "2026-07-15",
   "source": "docs/manual-toc.md + 賴管家 - 預約.md + 賴管家 - 活動模組.md + docs/case-studies/",
   "manual_file": "賴管家 - 操作手冊.md",
   "manual_total_lines": 736,
@@ -178,8 +178,8 @@
       "case_studies": []
     },
     "smart_customer_service": {
-      "display_name": "智能客服",
-      "summary": "AI 客服模組：文件上傳、文件管理、文件測試、基本設定。Token 額度每月 100 萬（約 2 萬好友 OA 每人每天 3-5 問）。",
+      "display_name": "智能客服（加購模組）",
+      "summary": "AI 客服加購模組（基本版 149／進階版 249／加強版 499/月，三級差異＝素材形式＋模型等級，非對話量；需搭配主套餐，主套餐不含 AI 額度）。AI 照餵入的價目表與規則代答訊息，回不了的自動轉真人——純問答定位，不執行預約、下訂等動作。額度以百分比顯示在後台。後台功能：文件上傳、文件管理、文件測試、基本設定。",
       "sections": [
         {
           "section_id": "smart_cs_manual_core",
@@ -189,7 +189,7 @@
           "recommended_offset": 452,
           "recommended_limit": 94,
           "heading": "模組 - 智能客服",
-          "note": "line 527 附近有 Token 額度 100 萬/月、客服開放時間、超出範圍預設回復文字等關鍵設定"
+          "note": "含客服開放時間、超出範圍預設回復文字等設定說明。⚠️ 手冊該段的「Token 額度 100 萬/月」為舊版表述（2026-04 擷取）——現行後台以百分比顯示額度，額度與定價一律以 get_pricing（data/pricing.json）為準"
         }
       ],
       "case_studies": []

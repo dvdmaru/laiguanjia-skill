@@ -79,45 +79,61 @@ def _load_json(filename: str) -> dict[str, Any]:
 )
 def get_pricing(plan: str = "all", include_promo: bool = True) -> dict[str, Any]:
     """
-    回傳賴管家方案價格。
+    回傳賴管家主套餐與加購模組價格（2026-07-15 對齊官網定價紅線版）。
+
+    定價模型三句話（違反＝重大文案事故）：
+        1. 主套餐只有兩個：個人版 NT$99／進階版 NT$599（月繳、未稅）。
+        2. 主套餐不含任何模組額度——「NT$99 含 AI」是錯誤表述。
+        3. 模組純加購、需搭配主套餐：智能客服 149／249／499 三級、
+           活動管理 199、分眾圖文選單 299。賣 AI 一律用組合框架
+           「個人版＋智能客服基本版 NT$248/月 ≈ 一天 8 元」。
 
     Args:
-        plan: 指定方案。可選值：
-            - "all"（預設）：回傳三個方案
-            - "personal"：個人版 $99/月（優惠價）
-            - "advanced"：進階版 $599/月（優惠價）
+        plan: 指定方案或模組。可選值：
+            - "all"（預設）：回傳主套餐＋所有加購模組
+            - "personal"：個人版 $99/月（主套餐）
+            - "advanced"：進階版 $599/月（主套餐）
+            - "smart_cs_module"：智能客服模組 $149/249/499（加購，三級）
             - "event_module"：活動管理模組 $199/月（加購）
-        include_promo: 是否包含優惠價（預設 True，因當前所有方案都有優惠）。
+            - "segment_menu_module"：分眾圖文選單模組 $299/月（加購）
+        include_promo: 已棄用。2026-07-15 起官網只標示現價（歷史促銷框架
+            「原價 299/899」已下架且 899 未經驗證），資料不再有 promo 欄位；
+            參數保留僅為向後相容，值不影響輸出。
 
     Returns:
-        dict，包含 plans 清單、billing_rules、source。
+        dict，包含 pricing_model_rules / plans（主套餐）/ addon_modules
+        （加購模組）/ custom_plan / billing_rules / historical_pricing_note /
+        source / last_updated。
     """
     data = _load_json("pricing.json")
     if "error" in data:
         return data
 
-    valid_plans = {"all", "personal", "advanced", "event_module"}
+    plans = data.get("plans", [])
+    addons = data.get("addon_modules", [])
+    valid_plans = (
+        {"all"}
+        | {p.get("id") for p in plans}
+        | {a.get("id") for a in addons}
+    )
     if plan not in valid_plans:
         return {
             "error": "plan 參數不合法",
-            "valid_values": sorted(valid_plans),
+            "valid_values": sorted(v for v in valid_plans if v),
             "received": plan,
         }
 
-    plans = data.get("plans", [])
     if plan != "all":
         plans = [p for p in plans if p.get("id") == plan]
-
-    # 依 include_promo 決定是否去除 promo_price_twd
-    if not include_promo:
-        plans = [
-            {k: v for k, v in p.items() if k != "promo_price_twd"}
-            for p in plans
-        ]
+        addons = [a for a in addons if a.get("id") == plan]
 
     return {
+        "pricing_model_rules": data.get("pricing_model_rules", {}),
         "plans": plans,
+        "addon_modules": addons,
+        "custom_plan": data.get("custom_plan"),
         "billing_rules": data.get("billing_rules", {}),
+        "historical_pricing_note": data.get("historical_pricing_note"),
         "source": data.get("source"),
         "last_updated": data.get("last_updated"),
     }
@@ -140,16 +156,21 @@ def get_contact_and_trial(channel: str = "all") -> dict[str, Any]:
     """
     回傳蝙蝠移動（賴管家母公司）的官方聯繫管道 + 試用流程說明。
 
+    ⚠️ 試用紅線（2026-07-04 確認）：免費試用「不需要」先加 LINE 好友——
+    試用直接走官網註冊入口（contacts.trial_url）；加 LINE 官方帳號是
+    真人諮詢／設定陪跑／客製洽談用的管道，不是試用的前置條件。
+
     Args:
         channel: 指定管道。可選值：
-            - "all"（預設）：回傳所有管道（LINE OA + Email + website）
+            - "all"（預設）：回傳所有管道（LINE OA + Email + website + trial_url）
             - "line_oa"：只回傳 LINE 官方帳號資訊
             - "email"：只回傳 email
 
     Returns:
-        dict，包含 contacts（管道資訊）、trial_flow（試用流程）、
-        prefilled_messages（預填訊息範本，供下一階段 initiate_trial_contact 使用）、
-        constraints（安全約束：不金流、不自動送出、不傳使用者個資）、source。
+        dict，包含 contacts（管道資訊）、trial_note（試用紅線說明）、
+        trial_flow（試用流程）、prefilled_messages（預填訊息範本，供
+        initiate_trial_contact 使用）、constraints（安全約束：不金流、
+        不自動送出、不傳使用者個資）、source。
 
     Security Notes:
         此工具僅為靜態查詢，不執行任何對外動作。若使用者已明確同意要發起試用，
@@ -183,6 +204,7 @@ def get_contact_and_trial(channel: str = "all") -> dict[str, Any]:
 
     return {
         "contacts": filtered,
+        "trial_note": data.get("trial_note"),
         "trial_flow": data.get("trial_flow", []),
         "prefilled_messages": data.get("prefilled_messages", {}),
         "constraints": data.get("constraints", {}),
@@ -300,7 +322,10 @@ def check_plan_suitability(
         2. 若 > 100,000 → 回傳 escalate 分支，引導至 @batmobile 客服
         3. 依 use_cases 檢查是否需從 personal 升級到 advanced
            （例如 hourly_analytics / group_management 只在 advanced）
-        4. 依 use_cases 檢查是否觸發加購（event_registration → event_module）
+        4. 依 use_cases 檢查是否觸發加購——主套餐不含任何模組額度：
+           smart_customer_service → smart_cs_module（基本版 149 起）、
+           event_registration → event_module（199）、
+           segmented_rich_menu → segment_menu_module（299）
         5. 合計 monthly_cost_twd（base + addons）
         6. industry 僅作為輔助提示，不影響主要決策
 
@@ -309,7 +334,7 @@ def check_plan_suitability(
         use_cases: 使用情境陣列（選填）。合法值見 feature_to_min_base_plan
             的 keys：booking / tagging_segmentation / rich_menu /
             mass_messaging / smart_customer_service / event_registration /
-            hourly_analytics / group_management
+            segmented_rich_menu / hourly_analytics / group_management
         industry: 產業代碼（選填）。合法值見 industry_hints 的 keys：
             hair_salon / nail_art / fitness / pet_grooming / confectionery /
             medical / retail / travel
@@ -602,6 +627,10 @@ def initiate_trial_contact(
     """
     產生 LINE OA deep link + 預填訊息文字，讓使用者自行點擊完成最後送出。
 
+    ⚠️ 定位（2026-07-15 更新）：這是「真人諮詢／陪跑／客製洽談」管道，
+    不是免費試用的前置步驟——試用不需要先加 LINE 好友，直接走官網註冊
+    入口即可（見 get_contact_and_trial 的 trial_url / trial_flow）。
+
     ⚠️ 安全約束（符合 CLAUDE.md 全域約束 + mcp-spec.md v0.1 Tool 6）：
         - no_payment_action        → 不執行金流
         - no_auto_submit           → 不自動送出訊息
@@ -715,6 +744,7 @@ def initiate_trial_contact(
         },
         "fallback": fallback,
         "oa_note": oa_info.get("note"),
+        "trial_note": data.get("trial_note"),
         "source": data.get("source"),
         "last_updated": data.get("last_updated"),
     }
