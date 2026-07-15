@@ -1,51 +1,93 @@
 {
+  "pricing_model_rules": {
+    "rule_1": "主套餐只有兩個：個人版 NT$99／進階版 NT$599（月繳）",
+    "rule_2": "主套餐不含任何模組額度——個人版沒加購智能客服就沒有任何 AI 額度",
+    "rule_3": "模組純加購、必須搭配主套餐：智能客服 149／249／499 三級、活動管理 199、分眾圖文選單 299",
+    "rule_4": "任何「NT$99 含 AI」的表述都是錯的。賣 AI 一律用組合框架：個人版＋智能客服基本版 NT$248/月 ≈ 一天 8 元（99+149=248）",
+    "rule_5": "客製需求（連鎖多店、系統串接、大量名單）＝無標價洽談，不是第三個主套餐",
+    "tax_note": "價格皆為新台幣、未稅、月繳不綁約，可隨時升降級或停用"
+  },
   "plans": [
     {
       "id": "personal",
       "name": "個人版",
       "name_en": "Personal",
-      "regular_price_twd": 299,
-      "promo_price_twd": 99,
-      "billing_cycle": "monthly_or_quarterly",
+      "price_twd": 99,
+      "billing_cycle": "monthly",
       "friend_cap": 50000,
       "friend_cap_min": 0,
+      "friend_cap_note": "好友數級距為歷史參考值，官網現行版本未再標示上限；簽約前請向 @batmobile 客服確認（2026-07-15）",
       "features": [
-        "會員管理",
-        "30 組標籤",
-        "發文管理",
+        "會員管理（會員卡與消費紀錄）",
+        "30 組標籤（自動貼標）",
+        "發文管理／分眾訊息",
         "圖文選單",
         "每日數據",
-        "預約管理"
+        "預約管理（放空檔、擋撞單、自動提醒）"
       ],
       "target": "個人工作者（髮型師／美甲／健身教練／甜品師／寵物美容／接送司機／諮詢師等）",
-      "source_file": "賴管家 - 費用.md"
+      "note": "底盤功能方案，不含任何模組額度。智能客服等模組採加購制，見 addon_modules。",
+      "source_file": "laiguanjia-site content/site/pricing.ts（紅線版，2026-07-15）"
     },
     {
       "id": "advanced",
       "name": "進階版",
       "name_en": "Advanced",
-      "regular_price_twd": 899,
-      "promo_price_twd": 599,
-      "billing_cycle": "monthly_or_quarterly",
+      "price_twd": 599,
+      "billing_cycle": "monthly",
       "friend_cap": 100000,
       "friend_cap_min": 50001,
+      "friend_cap_note": "好友數級距為歷史參考值，官網現行版本未再標示上限；簽約前請向 @batmobile 客服確認（2026-07-15）",
       "features": [
         "個人版所有功能",
         "每小時數據",
         "群組管理",
-        "標籤管理",
+        "進階標籤管理",
         "分群發文"
       ],
       "target": "中小企業、品牌分店 LINE OA、需要進階分群推播的團隊",
-      "note": "最多人使用的方案",
-      "source_file": "賴管家 - 費用.md"
+      "note": "同樣可加購所有模組，模組價格與個人版相同。",
+      "source_file": "laiguanjia-site content/site/pricing.ts（紅線版，2026-07-15）"
+    }
+  ],
+  "addon_modules": [
+    {
+      "id": "smart_cs_module",
+      "name": "智能客服模組（加購）",
+      "name_en": "AI Customer Service Module (Add-on)",
+      "is_addon": true,
+      "requires_base_plan": true,
+      "billing_cycle": "monthly",
+      "tiers": [
+        {
+          "name": "基本版",
+          "price_twd": 149,
+          "desc": "文字輸入＋模型使用——價目表、常見問題用文字餵給 AI"
+        },
+        {
+          "name": "進階版",
+          "price_twd": 249,
+          "desc": "基本版全部，加上檔案上傳與網址輸入——價目 PDF、官網頁面直接餵"
+        },
+        {
+          "name": "加強版",
+          "price_twd": 499,
+          "desc": "進階版全部，換上加強模型——素材多、問題雜的重度用法"
+        }
+      ],
+      "tier_basis": "三級差異＝素材形式＋模型等級，不是對話量",
+      "quota_note": "額度以百分比顯示在後台，隨時看得到目前用量；以好友數約一萬人的帳號實測，一個月的用量是足夠的",
+      "capability_note": "純問答定位：AI 照餵入的價目表與規則代答訊息，回不了的自動轉真人；不執行預約、下訂、貼標等動作",
+      "combo_framing": "個人版 99＋智能客服基本版 149＝NT$248/月，平均一天約 8 元",
+      "source_file": "laiguanjia-site content/site/pricing.ts（紅線版，2026-07-15）＋後台模組商城（2026-06-04）"
     },
     {
       "id": "event_module",
       "name": "活動管理模組（加購）",
       "name_en": "Event Management Module (Add-on)",
-      "regular_price_twd": null,
-      "promo_price_twd": 199,
+      "is_addon": true,
+      "requires_base_plan": true,
+      "price_twd": 199,
       "billing_cycle": "monthly",
       "features": [
         "報名表單自訂",
@@ -55,17 +97,35 @@
         "QR 碼簽到"
       ],
       "target": "需要辦活動報名／簽到／QR 碼／提醒的團隊（可與個人版或進階版併用）",
-      "is_addon": true,
       "pausable": true,
       "note": "不舉辦活動的月份可暫停，隨時可啟用",
       "source_file": "賴管家 - 活動模組.md"
+    },
+    {
+      "id": "segment_menu_module",
+      "name": "分眾圖文選單模組（加購）",
+      "name_en": "Segmented Rich Menu Module (Add-on)",
+      "is_addon": true,
+      "requires_base_plan": true,
+      "price_twd": 299,
+      "billing_cycle": "monthly",
+      "note": "新客、老客、VIP 各看到不一樣的選單——新客看價目，熟客直接走熟客通道",
+      "source_file": "laiguanjia-site content/site/pricing.ts（紅線版，2026-07-15）＋後台模組商城（2026-06-04）"
     }
   ],
+  "custom_plan": {
+    "id": "custom_enterprise",
+    "name": "客製方案",
+    "desc": "連鎖多店權限、與現有系統介接、大型名單搬遷等超出公開方案的需求，按情況報價，洽談不收費",
+    "contact": "@batmobile"
+  },
+  "historical_pricing_note": "早期曾以「原價 299／899、優惠價 99／599」的促銷框架呈現；官網現行版本只標示現價，且 899 未經驗證——對外引用一律只寫現價 99／599",
   "billing_rules": {
     "auto_renewal": "每月自動續約，系統不再另行發出續約通知（FAQ Q05）",
     "plan_change": "升降級不立即生效，於下個合約週期開始（FAQ Q04）",
-    "payment_method": "授權串接之第三方平台儲存付款資訊（FAQ Q07）"
+    "payment_method": "授權串接之第三方平台儲存付款資訊（FAQ Q07）",
+    "tax": "價格皆為新台幣、未稅；實際發票金額以含稅總額為準（FAQ Q08 服務條款補充）"
   },
-  "source": "賴管家 - 費用.md + 賴管家 - 活動模組.md + 賴管家 - FAQ.md",
-  "last_updated": "2026-04-18"
+  "source": "laiguanjia-site content/site/pricing.ts（2026-07-15 圓桌審核版）＋後台模組商城截圖（2026-06-04）＋賴管家 - 活動模組.md＋賴管家 - FAQ.md",
+  "last_updated": "2026-07-15"
 }

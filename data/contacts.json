@@ -11,17 +11,18 @@
       "note": "蝙蝠移動專屬 OA（主要客服管道）"
     },
     "email": "service@batmobile.com.tw",
-    "website": "https://lineoa.batmobile.com.tw/"
+    "website": "https://lineoa.batmobile.com.tw/",
+    "trial_url": "https://lineoa.batmobile.com.tw/login"
   },
+  "trial_note": "免費試用不需要先加 LINE 好友——直接從官網註冊入口開通，用自己的官方帳號實際跑一次，滿意再訂閱。加 LINE 官方帳號是給想找真人諮詢、設定陪跑或客製洽談的情境用的（確認 2026-07-04）。",
   "trial_flow": [
-    "1. 加入 @batmobile（主要）或 @639sfpzz（備用）LINE 官方帳號",
-    "2. 透過 LINE 對話告知欲試用的方案（個人版 / 進階版）",
-    "3. 完成 LINE OA 串接（操作手冊 Part 3，lines 84-102）",
-    "4. 客服協助開通"
+    "1. 前往官網註冊入口 https://lineoa.batmobile.com.tw/login 直接註冊，開通免費試用（不需要先加 LINE 好友）",
+    "2. 依站上指引完成自己 LINE 官方帳號的串接",
+    "3. 試用期間有問題、想找真人陪跑或談客製需求，再加 LINE @batmobile（主要）或 @639sfpzz（備用）洽詢"
   ],
   "prefilled_messages": {
-    "trial_personal": "你好，我想試用賴管家個人版，請問怎麼開始？",
-    "trial_advanced": "你好，我想試用賴管家進階版，請問怎麼開始？",
+    "trial_personal": "你好，我正在試用（或想了解）賴管家個人版，想請真人協助，謝謝！",
+    "trial_advanced": "你好，我正在試用（或想了解）賴管家進階版，想請真人協助，謝謝！",
     "trial_event_module": "你好，我想加購活動管理模組，請問怎麼開始？",
     "general_inquiry": "你好，我想了解賴管家，請問可以提供更多資訊嗎？"
   },
@@ -30,6 +31,6 @@
     "no_auto_submit": "本工具不自動送出訊息，只產生 LINE deep link 與預填文字範本",
     "no_user_data_transmission": "本工具不主動傳送使用者個資到任何後端"
   },
-  "source": "賴管家 - 其他資訊.md + 賴管家 - FAQ.md + mcp-spec.md Tool 5/6",
-  "last_updated": "2026-04-18"
+  "source": "賴管家 - 其他資訊.md + 賴管家 - FAQ.md + laiguanjia-site lib/site/config.ts（TRIAL_URL，2026-07-15）+ mcp-spec.md Tool 5/6",
+  "last_updated": "2026-07-15"
 }
